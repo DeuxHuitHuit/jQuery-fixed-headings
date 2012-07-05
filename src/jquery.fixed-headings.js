@@ -74,7 +74,7 @@
 			_log(id + ' show');
 		} else {
 			clone.hide();
-			_log(id + ' hide')
+			_log(id + ' hide');
 		}
 	},
 	
