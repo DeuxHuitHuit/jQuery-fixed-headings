@@ -1,8 +1,8 @@
 /*
-*	Mobile Scroll Event v1.0 - jQuery plugin
+*	Fixed Headings v1.0 - jQuery plugin
 *
-*	Copyright (c) 2012 Deux Huit Huit (http://www.nitriques.com/open-source/)
-*	Licensed under the MIT (https://raw.github.com/DeuxHuitHuit/jQuery-mobile-scroll-event/master/LICENSE.txt)
+*	Copyright (c) 2012 Deux Huit Huit (http://www.deuxhuithuit.com)
+*	Licensed under the MIT (https://github.com/DeuxHuitHuit/jQuery-fixed-headings/blob/master/LICENSE.txt)
 */
 
 (function ($, undefined) {
