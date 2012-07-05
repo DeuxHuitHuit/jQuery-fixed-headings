@@ -15,7 +15,7 @@ module.exports = function(grunt) {
     },
     min: {
       dist: {
-        src: ['<banner:meta.banner>', 'jquery.*.js'],
+        src: ['<banner:meta.banner>', 'src/jquery.*.js'],
         dest: 'dist/<%= pkg.name %>.min.js'
       }
     },
