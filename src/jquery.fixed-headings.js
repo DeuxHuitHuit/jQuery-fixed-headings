@@ -21,9 +21,17 @@
 	// log/err prefix,
 	prefix = '[' + name + ']',
 	
+	win = $(window),
+	
+	isInit = false,
+	
+	_inst = [],
+	
 	// Default options
 	_defaults = {
-		
+		cloneCssClass: 'fixed-heading-clone',
+		cloneIdPrefix: 'fixed-heading-',
+		stopAtNext: true,
 		
 		debug: true // ONLY VALID IN DEFAULTS
 	},
@@ -40,8 +48,67 @@
 		}
 	},
 	
-	_fixedheadings = function (options) {
+	_isOverlappingNextElement = function (element, s, off, index) {
+		var nextIndex = index+1, next = null;
+		if (nextIndex >= _inst.length) {
+			return false;
+		}
 		
+		next = _inst[nextIndex].element;
+		
+		return s >= next.offset().top - element.height() - next.height();
+	},
+	
+	_scrollOne = function(index, elem) {
+		var e = elem.element,
+			o = elem.options,
+			s = win.scrollTop(),
+			off = e.offset(),
+			id = '#' + o.cloneIdPrefix + index,
+			clone = $(id),
+			isOffset = s >= off.top + e.height(),
+			isTooFar = !o.stopAtNext ? false : _isOverlappingNextElement(e, s, off, index);
+		
+		if (isOffset && !isTooFar) {
+			clone.css('left', off.left).show();
+			_log(id + ' show');
+		} else {
+			clone.hide();
+			_log(id + ' hide')
+		}
+	},
+	
+	_scroll = function (e) {
+		// scroll each elem
+		$.each(_inst, _scrollOne);
+	},
+	
+	_createClones = function (t, o) {
+		return t.clone().each(function cloneEach (index, elem) {
+			$(elem).attr('id', o.cloneIdPrefix + index)
+					.addClass(o.cloneCssClass)
+					.hide();
+		});
+	},
+	
+	_fixedheadings = function (options) {
+		var t = $(this),
+			o = $.extend({},_defaults,options),
+			clones = _createClones(t, o);
+		
+		// first time call, register for scroll events
+		if (!isInit) {
+			// @todo: container should be in options
+			win.scroll(_scroll).resize(_scroll);
+		}
+		
+		// save current config for later
+		t.each(function registerEachInstance (index, elem) {
+			_inst.push({element:$(elem), options:o});
+		});
+		
+		// append clone elements to body
+		$('body').append(clones);
 	},
 	
 	
