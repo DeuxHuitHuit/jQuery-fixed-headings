@@ -1,0 +1,29 @@
+{
+  "name": "jquery.fixed-headings",
+  "title": "jQuery Fixed Headings",
+  "description": "jQuery plugin that quickly enables you to add fixed headings (title) for long scrolling sections",
+  "version": "1.0",
+  "homepage": "https://github.com/DeuxHuitHuit/jQuery-fixed-headings",
+  "author": {
+    "name": "Deux Huit Huit",
+    "url": "http://www.deuxhuithuit.com/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/DeuxHuitHuit/jQuery-fixed-headings.git"
+  },
+  "bugs": {
+    "url": "https://github.com/DeuxHuitHuit/jQuery-fixed-headings/issues"
+  },
+  "licenses": [
+    {
+      "type": "MIT",
+      "url": "https://github.com/DeuxHuitHuit/jQuery-fixed-headings/blob/master/LICENSE.txt"
+    }
+  ],
+  "dependencies": {
+    "jquery": "~1.7",
+	"grunt": "~0.3.9"
+  },
+  "keywords": []
+}
